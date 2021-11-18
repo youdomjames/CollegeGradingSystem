@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html lang="en" 
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="navbar">
+
+    <head th:replace = "fragments :: html_head">
+        <title>Registration System | Assignments</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    </head>
+    <body>
+        <!-- Menu -->
+        <div th:replace="fragments :: teacher-menu">
+        </div>
+        <br>
+        <div class = "container justify-content-center">
+
+            <h1 class = "text-center"> New Assignment </h1>
+            <br>
+            <form th:action="@{/teacher/assignments/{id} (id=${course.course_id})}" th:object = "${course}" method="POST" encType="multipart/form-data">
+            <div class ="justify-content-center">
+     
+                    <div class="card">
+                        <div class="card-header" align="center">
+                            <h3 th:text="${course.courseTitle}"></h3>
+                        </div>
+                            <div class="card-body container-fluid">
+                                <div class="form-group col-lg-6">
+                                    <label>Assignment File: </label>
+                                    <input type="file" name="file" class="form-control"  />
+                                </div>
+
+                                <div class="form-group col-lg-6">
+                                    <label>Due Date: </label>
+                                    <input type="date" th:field="*{assignment_DueDate}" class="form-control"  />
+                                </div>
+
+                                <div class="form-group col-lg-12">
+                                    <label>Note: </label>
+                                    <textarea  th:field="*{assignment_Note}" class="form-control" placeholder="Please enter a note for this assignment" ></textarea>
+                                </div>
+                            </div>
+                            <div align="center">
+                                <button type="submit" class="btn btn-outline-secondary">
+                                    Submit
+                                </button>
+
+                            </div>
+                            <br>
+                        
+                    </div>
+                    
+                </div>
+                </form>
+            </div>
+            
+            
+        
+<div th:replace="fragments :: footer">
+        </div>
+    </body>
+</html>

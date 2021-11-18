@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html lang="en" 
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="navbar" >
+
+    <head th:replace = "fragments :: html_head">
+        <title>Registration System | Home </title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    </head>
+    <body>
+        <!-- Menu -->
+        <div th:replace="fragments :: student-menu">
+        </div>
+
+        <br><br>
+        <div class="modal-body alert alert-warning text-center" th:if="${student.tuitionFees}=='0'" >
+            <h3>You have no tuition fee to pay for now</h3>
+        </div>
+        <div >
+            <div class="modal-body alert alert-success text-center" th:if="${state == 'success'}" >
+                <h3>Payment made successfully for </h3>
+            </div>
+            <div class="modal-body alert alert-danger text-center" th:if="${state == 'failed'}" >
+                <h3>Something went wrong, no payment have been made for </h3>
+            </div>
+        </div>
+        <div class="col-md-6 col-sm-6 container justify-content-center">
+            <h4 class="d-flex justify-content-between align-items-center mb-3">
+                <span class="text-muted">Your courses</span>
+                <span class="badge badge-secondary badge-pill" th:text="${size}"></span>
+            </h4>
+            <ul class="list-group mb-3">
+                <li class="list-group-item d-flex justify-content-between lh-condensed" th:unless="${student.tuitionFees}=='0'" th:each="course: ${courses}">
+                    <div>
+                        <h6 class="my-0" th:text="${course.courseTitle}"></h6>
+                        <small class="text-muted">Teacher: <span th:text="${course.teacher.fullName}"></span></small>
+                    </div>
+                    <span class="text-muted" >$<span th:text="${course.Price}" ></span></span>
+                </li>
+                <form method="post"  action="/student/pay">
+                    <li class="list-group-item d-flex justify-content-between">
+                        <span>Total (CAD)</span>
+                        <strong>$<span th:text="${student.tuitionFees}"></span></strong>
+                    </li>
+                    <input hidden type="number" step="0.01" id="amount" name="amount" th:value="${student.tuitionFees}"/>
+                    <input hidden type="text" id="currency" name="currency" value="CAD"/>
+                    <input hidden type="text" id="method" name="method" value="paypal"/>
+                    <input hidden type="text" id="intent" name="intent" value="sale"/>
+                    <input hidden type="text" id="description" name="description" placeholder="Payment Description" value="Tuition Payment"/>
+                    <br>
+                    <div align="center">
+                        <input type="submit" value="Make Payment" class="btn btn-outline-secondary justify-content-center">
+                    </div>
+                </form>
+            </ul>
+
+            <div class="icon-container" align="center">
+                <i class="fa fa-cc-visa" style="color:navy;font-size:50px;"></i>
+                <i class="fa fa-cc-paypal" style="color:blue;font-size:50px;"></i>
+                <i class="fa fa-cc-mastercard" style="color:red;font-size:50px;"></i>
+            </div>
+        </div>
+        <div th:replace="fragments :: footer">
+        </div>
+    </body>
+</html>

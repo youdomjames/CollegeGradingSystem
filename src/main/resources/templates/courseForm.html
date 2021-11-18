@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments :: html_head">
+    <title>Registration System | Add Student</title>
+</head>
+<body>
+<!-- Menu-->
+<div th:replace="fragments :: menu">
+</div>
+<div class="img-fluid">
+    <video width="100%" height="auto" muted autoplay="1">
+        <source th:src="@{/videos/adminNewCourse.mp4}" type="video/mp4"/>
+    </video>
+</div>
+<div class="container">
+    <br>
+    <div class="col-lg-12 col-md-6 col-sm-6 container justify-content-center card">
+        <div class="row">
+            <h1 class="text-center"> Add New Course </h1>
+            <br><br>
+            <div class="container-fluid" align="center">
+                <form th:action="@{/admin/courses}" th:object="${course}" method="POST">
+
+                    <div class="form-row">
+                        <div class="form-group col-lg-4">
+                            <label>Course Title</label>
+                            <input type="text" th:field="*{courseTitle}" class="form-control" placeholder="Course Title"
+                                   id="courseTitle" name="courseTitle"/>
+                        </div>
+
+                        <div class=" form-group col-lg-4">
+                            <label>Course Price</label>
+                            <input type="number" th:field="*{price}" class="form-control"
+                                   aria-label="Amount (to the nearest dollar)">
+                        </div>
+
+                        <div class="form-group col-lg-4">
+                            <label>Teacher</label>
+                            <select class="form-control form-select" name="teacher" th:field="*{teacher}">
+                                <option th:each="c:${teachers}" th:value="${c.teacher_id}"
+                                        th:text="${c.fullName}"></option>
+                            </select>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div align="center">
+                <button type="submit" class="btn btn-outline-secondary">
+                    Submit
+                </button>
+                &nbsp;
+                <a th:href="@{/courses}" class="btn btn-outline-secondary">View Courses' List</a>
+            </div>
+            <br>
+
+
+        </div>
+        <br>
+    </div>
+</div>
+</div>
+<footer class="fixed-bottom">
+    <div th:replace="fragments :: footer">
+    </div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html lang="en" 
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="navbar" >
+    
+    <head  th:replace = "fragments :: html_head">
+        <title>Registration System | Home </title>
+    </head>
+
+    <body>
+
+        <!-- Menu -->
+        <div th:replace="fragments :: menu">
+        </div>
+
+        <div class="row">
+            <img class="first-slide" th:src="@{/img/admin.png}" width="auto" height="100%" alt="First slide">
+        </div>
+
+        <br>
+
+        <div align="center ">
+            <h2 class="text-uppercase border border-secondary">Quick buttons</h2>
+        </div>
+
+        <br>
+        <div class="container-fluid">
+        <div class="container marketing">
+
+            <div class="row justify-content-center" align="center">
+                <div class="col-lg-4">
+                    <img class="rounded-circle" th:src="@{/img/adminCo.png}" alt="Generic placeholder image" width="140" height="140">
+                    <h2>Add Course</h2>
+                    <p>Here you can add a new course. You'll have to provide the price and the teacher's name for this course.
+
+                    </p>
+                    <div><a class="btn btn-secondary" href="/admin/add/course" role="button">New Course &raquo;</a></div>
+                </div>
+                <div class="col-lg-4">
+                    <img class="rounded-circle" th:src="@{/img/adminStudent.png}" alt="Generic placeholder image" width="140" height="140">
+                    <h2>Add Student</h2>
+                    <p>Here you can add a new student. Please make sure you have all the student's info before starting. Note that a new username and password will be created automatically.</p>
+                    <div><a class="btn btn-secondary" href="/admin/add/student" role="button">New Student &raquo;</a></div>
+                </div><!-- /.col-lg-4 -->
+                <div class="col-lg-4">
+                    <img class="rounded-circle" th:src="@{/img/adminTeacher.png}" alt="Generic placeholder image" width="140" height="140">
+                    <h2>Add Teacher</h2>
+                    <p>Here you can add a new teacher. Please make sure you have all the teacher's info before starting. Note that a new username and password will be created automatically.</p>
+
+                    <div>
+                        <a class="btn btn-secondary" href="/admin/add/teacher" role="button">New Teacher &raquo;</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+</div>
+        <br><br>
+            <!-- Footer -->
+        <div th:insert="fragments :: footer">
+        </div>
+    </body>
+</html>

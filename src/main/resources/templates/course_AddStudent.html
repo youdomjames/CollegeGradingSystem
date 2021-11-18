@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html xmlns:th="http://www.thymeleaf.org">
+    <head th:replace = "fragments :: html_head">
+        <title>Registration System | Student add Course </title>
+    </head>
+    <body>
+        <!-- Menu -->
+        <div th:replace="fragments :: menu">
+        </div>
+        <div class="img-fluid">
+            <video width="100%" height="auto" muted autoplay="1">
+                <source th:src="@{/videos/register.mp4}" type="video/mp4"/>
+            </video>
+        </div>
+
+        <br> <br>
+
+        <div class ="container align-items-center">
+
+            <div class="justify-content-center">
+                <form th:action="@{/admin/students/course/{id}(id=${student.student_id})}" th:object = "${student}" method="POST">
+
+                    <div class = "card">
+                        <h1 class = "text-center" th:text="${student.fullName}"> </h1>
+                        <br>
+                        <div align="center">
+                        <label>Select a course:</label>
+                        <select  class="form-control form-select col-lg-6" name="courseId">   
+                            <option th:each = "c:${courses}" th:value="${c.course_id}" th:text ="${c.courseTitle}" ></option>
+                        </select>
+                        </div>
+                        <br>
+                        <div align="center">
+                            <button type="submit" class="btn btn-outline-secondary">
+                                Add
+                            </button>
+                        </div>                        
+                        <br>
+                    </div>
+            </div>
+        </div>
+        
+        <div th:replace="fragments :: footer" >
+        </div>
+        
+    </body>
+</html>

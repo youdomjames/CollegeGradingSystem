@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html lang="en" 
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="navbar" >
+    
+    <head th:replace = "fragments :: html_head">
+        <title>Registration System | Home </title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+       
+    </head>
+
+    <body>
+     <!-- Menu -->
+        <div th:replace="fragments :: index-menu">
+        </div>
+
+        <div class="container-fluid justify-content-center align-items-center">    
+
+            <h1>Sorry, Page not found</h1>
+            
+        </div>
+        <br><br>
+        
+                <!-- Footer -->
+        <div th:replace="fragments :: footer">
+        </div>
+    </body>
+</html>

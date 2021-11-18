@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html xmlns:th="http://www.thymeleaf.org">
+    <head th:replace = "fragments :: html_head">
+        <title>Registration System | Results</title>
+    </head>
+    <body>
+        <!-- Menu -->
+        <div th:replace="fragments :: teacher-menu">
+        </div>
+        <!--<img class="img-fluid" th:src="@{/img/student-list.png}" alt="students" />-->
+        <br><br>
+
+        <div class = "container">
+
+            <div class ="col-lg-12 col-md-6 col-sm-6 container justify-content-center card">
+                <div class = "row">
+                    <h1 class = "text-center"> Please insert the student's grades </h1>
+                </div>
+                <br>
+                <div class = "row">
+                    <h4 class = "text-center" >Student : <span class="text-success font-italic" th:text="${student.fullName}"></span></h4>
+                </div>
+                <br>
+                <div class="container-fluid" align="center">
+                    <form th:action="@{/teacher/grades/{id}(id=${student.student_id})}" th:object = "${result}" method="POST">
+
+                        <div class="form-row">
+
+                            <div class="form-group col-lg-12">
+                                <label>Select the course</label>
+                                <select  class="form-control form-select" name="course"  th:field = "*{course}">   
+                                    <option th:each = "course:${courses}" th:value="${course.course_id}" th:text ="${course.courseTitle}" ></option>
+                                </select>
+                            </div>
+
+                            <div class="form-group col-lg-4">
+                                <label>Exam 1</label>
+                                <input type="number" th:field="*{mark1}" class="form-control"/>
+                            </div>
+
+                            <div class="form-group col-lg-4">
+                                <label>Exam 2</label>
+                                <input type="number" th:field="*{mark2}" class="form-control"/>
+                            </div>
+
+                            <div class="form-group col-lg-4">
+                                <label>Exam 3</label>
+                                <input type="number" th:field="*{mark3}" class="form-control"/>
+                            </div>
+
+
+                        </div>
+                        <div align="center">
+                            <button type="submit" class="btn btn-outline-secondary">
+                                Submit
+                            </button>
+                        </div>
+                        <br>
+                    </form>
+                </div>
+                <br>
+            </div>
+        </div>
+<div th:replace="fragments :: footer">
+        </div>
+</body>
+</html>

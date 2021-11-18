@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html lang="en" 
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="navbar" >
+    
+    <head th:replace = "fragments :: html_head">
+        <title>Registration System | Home </title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+       
+    </head>
+
+    <body>
+        
+        <!-- Menu -->
+        <div th:replace="fragments :: index-menu">
+        </div>
+
+        <div class="img-fluid">
+            <video width="100%" height="auto" muted autoplay loop>
+                <source th:src="@{/videos/index1.mp4}" type="video/mp4"/>
+            </video>
+        </div>
+
+        <br>
+        <div align="center">
+        <ul th:unless="${user} != null">
+            <li class="dropdown btn1 btn btn-lg">
+                <a class="dropdown-toggle " href="" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Log In
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <li><a class="dropdown-item" href="/admin/home"> Administration</a></li>
+                    <li><a class="dropdown-item" href="/student/home">  Students</a></li>
+                    <li><a class="dropdown-item" href="/teacher/home"> Teachers</a></li>
+                </ul>
+            </li>
+        </ul>
+        </div>
+
+                <!-- Footer -->
+        <div th:replace="fragments :: footer" class="justify-content-end">
+        </div>
+        
+    </body>
+</html>

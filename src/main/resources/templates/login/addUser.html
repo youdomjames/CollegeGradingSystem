@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html lang="en" xmlns:th="http://thymeleaf.org">
+    <head th:replace = "fragments :: html_head">
+        <title>Add User</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <div th:replace="fragments :: menu">
+        </div>
+        <div class="wrapper fadeInDown">
+            <div id="formContent">
+                <!-- Tabs Titles -->
+
+                <!-- Icon -->
+                <div class="fadeIn first">
+                    <img class="rounded-pill" th:src="@{/img/logo.png}" height="100px" alt="logo"/>
+                    <h2>Please fill this form</h2>
+                </div>
+
+                <!-- Login Form -->
+                <form class="form-signin" method="post" action="/add/User">
+                    <input type="text" id="user_id" class="fadeIn second" th:field="*{user_id}" name="id" placeholder="ID">
+                    <input type="text" id="firstName" class="fadeIn second" th:field="*{firstName}" name="firstName" placeholder="First name">
+                    <input type="text" id="lastName" class="fadeIn second" th:field="*{lastName}" name="lastName" placeholder="Last name">
+                    <input type="text" id="email" class="fadeIn second" th:field="*{email}" name="email" placeholder="E-mail">
+                    <input type="text" id="login" class="fadeIn second" th:field="*{username}" name="username" placeholder="Username">
+                    <input type="password" id="password" class="fadeIn third" name="password" placeholder="Password">
+                    <input type="password" id="confirm_password" class="fadeIn third" name="password" placeholder="Confirm Password">
+                    <input type="submit" class="fadeIn fourth" value="Add">
+                </form>
+
+                <!-- Remind Passowrd -->
+                <div id="formFooter">
+        
+                </div>
+
+            </div>
+        </div>
+        
+        <div th:replace="fragments :: footer">
+        </div>
+    </body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" 
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="navbar">
+    <head th:replace = "fragments :: html_head">
+        <title>Registration System | Users' List</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    </head>
+
+    <body>
+        <!-- Menu -->
+        <div th:replace="fragments :: menu">
+        </div>
+        <!--<img class="img-fluid" th:src="@{/img/student-list.png}" alt="students" />-->
+        <br><br>
+
+        <div class="d-flex">
+            <form class="d-flex"  th:action="@{/admin/users}" method="get">
+                <input class="form-control col-lg-12" name="keyword" type="search" placeholder="Search by first name or last name keyword" aria-label="Search">
+                <button class="btn btn-outline-success btn-index4" type="submit">Search</button>
+            </form>
+            <br>
+        </div>
+        <div class ="container-fluid">
+
+        </div>
+        <table class = "table table-striped table-bordered">
+            <thead class = "table-dark">
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">First Name</th> 
+                    <th scope="col">Last Name</th> 
+                    <th scope="col">Username</th> 
+                    <th scope="col">Password</th> 
+                    <th scope="col">Role</th> 
+                    <th scope="col">Update</th>
+                    <th scope="col">Delete</th> 
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr th:each = "user: ${users}">
+                    <td th:text = "${user.userId}"></td>
+                    <td th:text = "${user.firstName}"></td>
+                    <td th:text = "${user.lastName}"></td>
+                    <td th:text = "${user.username}"></td>
+                    <td th:text = "${user.password}"></td>
+                    <td th:text = "${user.role}"></td>
+                    <td>
+                        <a th:href = "@{/admin/users/edit/{id}(id=${user.userId})}"
+                           class = "btn btn-primary">Update</a>
+                    </td>
+                    <td>
+                        <a th:href = "@{/admin/users/{id}(id=${user.userId})}"
+                           class = "btn btn-danger">Delete</a>
+                    </td>
+                </tr>
+            </tbody>
+
+        </table>
+        <div align="center">
+            <div class = "col-lg-3">
+                <a th:href = "@{/admin/add/user}" class = "btn btn-secondary btn-lg mb-3"> Add Admin User</a>
+            </div>
+        </div>
+        
+        <div th:replace="fragments :: footer">
+        </div>
+    </body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html xmlns:th="http://www.thymeleaf.org">
+    <head th:replace = "fragments :: html_head">
+        <title>Registration System | My Courses</title>
+    </head>
+    <body>
+        <!-- Menu -->
+        <div th:replace="fragments :: student-menu">
+        </div>
+        <!--  <img class="img-fluid" th:src="@{/img/student.png}" alt="student" />-->
+        <br><br>
+        <br>
+        <br>
+        <div class = "container" >
+            <h1 class="text-center">My Courses</h1>
+            <br>
+            <div class="row" >
+                <div class="modal-body alert alert-warning text-center" th:if="${message != null}" >
+                    <h3 th:text="${message}"></h3>
+                </div>
+                <div class="col card" th:each="result : ${results}" th:unless="${message != null}">
+                    <a href="#"><h3 th:text="${result.course.courseTitle}"></h3></a>
+
+                    <p>Teacher:</p>
+
+                    <h6 th:text="${result.course.Teacher.fullName}"></h6>
+                    <p>E-mail: <span  th:text="${result.course.Teacher.email}"></span></p>                    
+                    <p>Tel: <span th:text="${result.course.Teacher.phoneNumber}"></span></p>                   
+                    <p>Fax: <span th:text="${result.course.Teacher.fax}"></span></p>                     
+                </div>
+            </div>
+        </div>
+        
+        <div th:replace="fragments :: footer">
+        </div>
+    </body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head th:replace = "fragments :: html_head">
+        <title>Registration System | Add Student</title>
+    </head>
+    <body>
+        <!-- Menu -->
+        <div th:replace="fragments :: menu">
+        </div>
+        <div class="img-fluid">
+            <video width="100%" height="auto" muted autoplay="1">
+                <source th:src="@{/videos/adminNewCourse.mp4}" type="video/mp4"/>
+            </video>
+        </div>
+        <div class = "container">
+
+            <div class ="col-lg-12 col-md-6 col-sm-6 container justify-content-center card">
+                <div class = "row">
+                    <h1 class = "text-center"> New Course </h1>
+                    <br><br>
+                    <div class="container-fluid" align="center">
+                        <form th:action="@{/admin/courses/{id} (id=${course.course_id})}" th:object = "${course}" method="POST">
+
+                            <div class="form-row">
+                                <div class="form-group col-lg-6">
+                                    <label>Course Title</label>
+                                    <input type="text" th:field="*{courseTitle}" class="form-control" placeholder="Course Title" id="courseTitle" name="courseTitle" onblur="onchange()"/>
+                                </div>
+
+                                <div class="input-group mb-3 form-group col-lg-4">
+                                    <label>Course Price</label>
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">$</span>
+                                    </div>
+                                    <input type="number" th:field="*{price}" class="form-control" aria-label="Amount (to the nearest dollar)">
+                                </div>
+
+                                <div class="form-group col-lg-6">
+                                    <label>Teacher</label>
+                                    <select  class="form-control form-select" name="teacher"  th:field = "*{teacher}">   
+                                        <option th:each = "c:${teachers}" th:value="${c.teacher_id}" th:text ="${c.fullName}" ></option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div align="center">
+                                <button type="submit" class="btn btn-outline-secondary">
+                                    Submit
+                                </button>
+                                &nbsp;
+                                <a th:href="@{/courses}" class="btn btn-outline-secondary">View Courses' List</a>
+                            </div>
+                            <br>
+
+
+                        </form>
+                    </div>
+                    <br>
+                </div>
+            </div>
+        </div>
+    <div class="fixed-bottom">
+        <div th:replace="fragments :: footer">
+        </div>
+    </div>
+    </body>
+</html>

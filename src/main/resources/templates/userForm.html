@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head th:replace = "fragments :: html_head">
+        <title>Registration System | Add Teacher</title>
+    </head>
+    <body>
+        <!-- Menu -->
+        <div th:replace="fragments :: menu">
+        </div>
+        <!--<img class="img-fluid" th:src="@{/img/student.png}" alt="student" />-->
+        <br><br>
+        <br>
+        <br>
+        <div class = "container-fluid">
+            <div class = "row">
+                <div class ="col-lg-6 col-md-6 col-sm-6 container justify-content-center card">
+                    <h1 class = "text-center"> New Admin User </h1>
+                    <br>
+                    <form th:action="@{/admin/users}" th:object = "${user}" method="POST">
+                        <div class="container-fluid" align="center">
+
+                            <div class="form-row" align="center">
+                                <div class="form-group col-md-6">
+                                    <label>Username</label>
+                                    <input type="text"  th:field = "*{username}" class="form-control" placeholder="Username" id="firstName" name="username"/>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label>Password</label>
+                                    <input type="password" th:field = "*{password}" class="form-control" placeholder="Password" name="password"/>
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group col-md-2">
+                                    <label>ID</label>
+                                    <input  type="text"  th:value="*{userId}"  class="form-control" placeholder="ID" id="userId"  name="userId" />
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <label>First Name</label>
+                                    <input  type="text"  th:value="*{firstName}" th:field = "*{firstName}" class="form-control" placeholder="First name" id="firstName"  name="firstName"/>
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <label>Last Name</label>
+                                    <input  type="text"  th:value="*{lastName}" th:field = "*{lastName}" class="form-control" placeholder="Last name" name="lastName" id="lastName"/>
+                                </div>
+                                <div class="form-group col-md-2">
+                                    <label>Role</label>
+                                    <input  type="text"  th:value="${role}"class="form-control" placeholder="Role" name="role" id="role"/>
+                                </div>
+                            </div>
+
+                            <div align="center">
+                                <button type="submit" id="submit" name="submit" class="btn btn-outline-primary">
+                                    Submit
+                                </button>
+                            </div>
+                    </form>
+                    <br>
+                    <div align="center">
+                        <a th:href="@{/admin/users}" class="btn btn-sm btn-outline-primary">View Users' List</a>
+                    </div>
+                </div>
+                <br><br>
+            </div>
+        </div>
+    </div>
+<div th:replace="fragments :: footer">
+        </div>
+</body>
+</html>

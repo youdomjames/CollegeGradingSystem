@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html lang="en" 
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="navbar">
+
+    <head th:replace = "fragments :: html_head">
+        <title>Registration System | Assignments</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    </head>
+    <body>
+        <!-- Menu -->
+        <div th:replace="fragments :: teacher-menu">
+        </div>
+
+        <br><br>
+
+        <div class = "container" >
+            <div class="row align-items-center" >
+                <div class="col card btn" th:each="course : ${courses}">
+                    <a th:href="@{/teacher/assignments/{id}(id=${course.course_id})}" ><h1 th:text="${course.courseTitle}"></h1></a>                    
+                </div>
+            </div>
+            <br><br>
+            <div class="modal-body alert alert-warning text-center" th:if="${message != null}" >
+                <h3 th:text="${message}"></h3>
+            </div>
+        </div>
+        <div th:replace="fragments :: footer">
+        </div>
+    </body>
+</html>

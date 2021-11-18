@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html lang="en" xmlns:th="http://thymeleaf.org">
+    <head>
+        <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+        <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+        <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+        <link rel="stylesheet" th:href="@{/css/login.css}"/>
+        <title>Log in</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <div class="wrapper fadeInDown">
+            <div id="formContent">
+                <!-- Tabs Titles -->
+
+                <!-- Icon -->
+                <div class="fadeIn first">
+                    <img class="rounded-pill" th:src="@{/img/logo.png}" height="100px" alt="logo"/>
+                    <h2>Please Log in</h2>
+                </div>
+
+                <!-- Login Form -->
+                <form class="form-signin" th:action="@{/login}" th:object = "${user}" method="post">
+                    <input type="text" id="login" class="fadeIn second" th:field="*{username}" name="username" placeholder="username">
+                    <input type="password" id="password" class="fadeIn third" th:field="*{password}" name="password" placeholder="password">
+                    <tr>
+                        <td>Remember Me:</td>
+                       <td><input type="checkbox" name="remember-me" /></td>
+                    </tr>
+                    <br>
+                    <input type="submit" class="fadeIn fourth" value="Log In">
+                    <div th:if="${param.error}">
+                        <div class="alert alert-danger">
+                            <span>Invalid Username or Password. Please try again</span>
+                        </div>
+                    </div>
+                    <div th:if="${param.logout}">
+                        <div class="alert alert-danger">
+                            <span>You have been logged out!</span>
+                        </div>
+                    </div>
+                    <div th:if="${param.accessDenied}">
+                        <div class="alert alert-danger">
+                            <span>Access Denied</span>
+                        </div>
+                    </div>
+                </form>
+
+                <!-- Remind Passowrd -->
+                <div id="formFooter">
+                    <p class="underlineHover">By login in you accept the terms and conditions of the website</p>
+                </div>
+
+            </div>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html xmlns:th="http://www.thymeleaf.org">
+    <head th:replace = "fragments :: html_head">
+        <title>Registration System | Assignments</title>
+    </head>
+    <body>
+        <!-- Menu -->
+        <div th:replace="fragments :: student-menu">
+        </div>
+        <!--<img class="img-fluid" th:src="@{/img/student-list.png}" alt="students" />-->
+        <br><br>
+        <h1 class="text-center">Assignments</h1>
+        <br>
+        <div class="modal-body alert alert-warning text-center" th:if="${message != null}" >
+            <h3 th:text="${message}"></h3>
+            
+            <a class="btn btn-outline-secondary" th:href="@{/student/assignments}"> Go Back</a>
+        </div>
+       
+        <div th:replace="fragments :: footer">
+        </div>
+    </body>
+</html>

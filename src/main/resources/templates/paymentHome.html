@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html lang="en" 
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="navbar" >
+
+    <head th:replace = "fragments :: html_head">
+        <title>Registration System | Payment </title>
+    </head>
+    <body>
+        <!-- Menu -->
+        <div th:replace="fragments :: menu">
+        </div>
+        <div class="justify-content-center">
+                <div class="container">
+                    <form method="post"  action="/admin/pay" class="form-control">
+                            <h3>Payment</h3>
+                            <label>Accepted Cards</label>
+                            <div class="icon-container">
+                                <i class="fa fa-cc-visa" style="color:navy;"></i>
+                                <i class="fa fa-cc-paypal" style="color:blue;"></i>
+                                <i class="fa fa-cc-mastercard" style="color:red;"></i>
+                            </div>
+                            <h3 th:text="${teacher.fullName}"></h3>
+                            <label for="salary">Salary</label>
+                            <input readonly type="text" id="salary" name="salary" th:value="${teacher.salary}"/>
+                            <input hidden type="text" name="teacher_id" th:value="${teacher.teacher_id}"/>
+                            <input hidden type="text" id="currency" name="currency" value="CAD"/>
+                            <input hidden type="text" id="method" name="method" value="paypal"/>
+                            <input hidden type="text" id="intent" name="intent" value="sale"/>
+                            <label for="description">Payment Description</label>
+                            <textarea type="text" id="description" name="description" placeholder="Payment Description"></textarea>
+                            <br>
+                        <input type="submit" value="Make Payment" class="btn btn-outline-secondary">
+                    </form>
+                    </div>
+            </div>
+    </body>
+</html>
