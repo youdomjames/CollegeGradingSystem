@@ -41,10 +41,19 @@ public class Teacher implements Serializable {
      
      @OneToMany(cascade = CascadeType.ALL, mappedBy="teacher")
      private List<Course> courses;
-     
+
      
 
     public Teacher() {
+    }
+
+    public Teacher(String firstName, String lastName, String phoneNumber, String email, String gender, String dateOfBirth) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.phoneNumber = phoneNumber;
+        this.email = email;
+        this.gender = gender;
+        this.dateOfBirth = dateOfBirth;
     }
 
     public Teacher(Long teacher_id, String firstName, String lastName, String fullName, String address_StreetName, String city, String province, String postalCode, String country, String fullAddress, String phoneNumber, String fax, String email, String gender, String dateOfBirth, int salary, Users user, List<Course> courses, Date last_PaymentDate) {

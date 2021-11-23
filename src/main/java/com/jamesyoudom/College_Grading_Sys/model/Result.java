@@ -39,7 +39,16 @@ public class Result {
     public Result() {
     }
 
-    public Result(Long result_id, int mark1, int mak2, int mar3, String grade,  Student student, Course course) {
+    public Result(int mark1, int mark2, int mark3, String grade, Student student, Course course) {
+        this.mark1 = mark1;
+        this.mark2 = mark2;
+        this.mark3 = mark3;
+        this.grade = grade;
+        this.student = student;
+        this.course = course;
+    }
+
+    public Result(Long result_id, int mark1, int mak2, int mar3, String grade, Student student, Course course) {
         this.result_id = result_id;
         this.mark1 = mark1;
         this.mark2 = mak2;

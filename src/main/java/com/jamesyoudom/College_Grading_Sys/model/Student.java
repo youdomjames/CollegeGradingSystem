@@ -47,6 +47,15 @@ public class Student {
     public Student() {
     }
 
+    public Student(String firstName, String lastName, String phoneNumber, String email, String gender, String dateOfBirth) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.phoneNumber = phoneNumber;
+        this.email = email;
+        this.gender = gender;
+        this.dateOfBirth = dateOfBirth;
+    }
+
     public Student(Long student_id, String firstName, String lastName, String organisation, String address_StreetName, String city, String province, String postalCode, String country, String fullAddress, String phoneNumber, String fax, String email, String gender, String dateOfBirth, String final_Grade, Users user, List<Result> results, double tuitionFees, Date lastPaymentDate) {
         this.student_id = student_id;
         this.firstName = firstName;

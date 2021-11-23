@@ -37,7 +37,12 @@ public class Course implements Serializable {
     
 
     public Course() {
-    }   
+    }
+
+    public Course(String courseTitle, double price) {
+        this.courseTitle = courseTitle;
+        this.price = price;
+    }
 
     public Course(Long course_id, String courseTitle, String teacher_Name, String assignment_Note, String assignment_DueDate, Teacher teacher, List<Result> results, double price) {
         this.course_id = course_id;
