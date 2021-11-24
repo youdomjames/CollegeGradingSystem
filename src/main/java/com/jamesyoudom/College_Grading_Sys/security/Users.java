@@ -52,6 +52,12 @@ public class Users {
     public Users() {
     }
 
+    public Users(String role, String username, String password) {
+        this.role = role;
+        this.username = username;
+        this.password = password;
+    }
+
     public Users(long userId, String username, String password, String firstName, String lastName, boolean disabled, boolean accountExpired, boolean accountLocked, boolean credentialsExpired) {
         this.userId = userId;
         this.username = username;

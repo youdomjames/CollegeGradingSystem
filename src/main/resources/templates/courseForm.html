@@ -8,7 +8,7 @@
 <div th:replace="fragments :: menu">
 </div>
 <div class="img-fluid">
-    <video width="100%" height="auto" muted autoplay="1">
+    <video width="100%" height="auto" muted autoplay loop>
         <source th:src="@{/videos/adminNewCourse.mp4}" type="video/mp4"/>
     </video>
 </div>
@@ -42,15 +42,16 @@
                             </select>
                         </div>
                     </div>
-                </form>
-            </div>
+
             <div align="center">
                 <button type="submit" class="btn btn-outline-secondary">
                     Submit
                 </button>
-                &nbsp;
+                 &nbsp;
                 <a th:href="@{/courses}" class="btn btn-outline-secondary">View Courses' List</a>
             </div>
+                </form>
+        </div>
             <br>
 
 

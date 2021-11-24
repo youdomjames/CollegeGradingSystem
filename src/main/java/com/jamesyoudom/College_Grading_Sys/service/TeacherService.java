@@ -39,7 +39,7 @@ public interface TeacherService {
     
     List<Student> getTeacherClasses_ListOfStudents(List<Result> teacherResults);
     
-    List<Course> getTeacherAssignments(Teacher teacher);
+    List<Course> getTeacherCourses(Teacher teacher);
     
     List<Result> getTeacherResults(Teacher teacher);
 

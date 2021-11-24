@@ -91,6 +91,7 @@ public class TeacherServiceImpl implements TeacherService {
 
     @Override
     public Teacher getTeacherById(Long id) {
+
         return teacherRepository.getById(id);
     }
 
@@ -180,7 +181,7 @@ public class TeacherServiceImpl implements TeacherService {
     }
 
     @Override
-    public List<Course> getTeacherAssignments(Teacher teacher) {
+    public List<Course> getTeacherCourses(Teacher teacher) {
 
         List<Course> courses = courseService.getAllCourses().stream().filter(s -> s.getTeacher().equals(teacher)).collect(Collectors.toList());
 
@@ -243,10 +244,9 @@ public class TeacherServiceImpl implements TeacherService {
 
     @Override
     public String saveStudentGrades(Result result, Student student) {
-
+        String message ="";
         List<Result> studentResults = student.getResults().stream().filter(s -> s.getStudent().getStudent_id().equals(student.getStudent_id())).collect(Collectors.toList());
         for (Result rs : studentResults) {
-            if (rs.getGrade() == null) {
                 rs.setMark1(result.getMark1());
                 rs.setMark2(result.getMark2());
                 rs.setMark3(result.getMark3());
@@ -255,11 +255,8 @@ public class TeacherServiceImpl implements TeacherService {
                 student.getResults().add(rs);
                 studentService.saveStudent(student);
 
-                String message = "You have successfully provided grades for " + student.getFullName();
-                return message;
-            }        
+                 message = "You have successfully provided grades for " + student.getFullName();
         }
-        String message = "Grades already inserted, expect no changes!";
         return message;
     }
 

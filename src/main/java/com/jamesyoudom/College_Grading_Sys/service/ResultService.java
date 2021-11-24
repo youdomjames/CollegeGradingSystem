@@ -6,6 +6,8 @@
 package com.jamesyoudom.College_Grading_Sys.service;
 
 import com.jamesyoudom.College_Grading_Sys.model.Result;
+import org.springframework.stereotype.Service;
+
 import java.util.List;
 import java.util.Set;
 
@@ -13,6 +15,7 @@ import java.util.Set;
  *
  * @author youdo
  */
+@Service
 public interface ResultService {
     
     List <Result> getAllResults ();

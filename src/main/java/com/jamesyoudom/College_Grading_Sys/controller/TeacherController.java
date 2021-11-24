@@ -10,7 +10,6 @@ import com.jamesyoudom.College_Grading_Sys.security.Users;
 import com.jamesyoudom.College_Grading_Sys.service.*;
 
 import java.io.IOException;
-import java.io.UnsupportedEncodingException;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -125,7 +124,7 @@ public class TeacherController {
 
         Course course = new Course();
         Teacher teacher = getCurrentUser().getTeacher();
-        List<Course> courses = teacherService.getTeacherAssignments(teacher);
+        List<Course> courses = teacherService.getTeacherCourses(teacher);
 
         if (courses.isEmpty()) {
             String message = "You have no course for the moment, please comeback later";
@@ -161,7 +160,7 @@ public class TeacherController {
 
         String message = "Your assignment has been successfully submited for " + newCourse.getCourseTitle();
 
-        List<Course> courses = teacherService.getTeacherAssignments(teacher);
+        List<Course> courses = teacherService.getTeacherCourses(teacher);
 
         model.addAttribute("course", newCourse);
         model.addAttribute("courses", courses);
